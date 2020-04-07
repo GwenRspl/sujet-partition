@@ -1,6 +1,5 @@
 package fr.gwenrspl;
 
-import fr.gwenrspl.exceptions.InvalidSizeArgumentException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +9,12 @@ public final class PartitionUtil {
     private PartitionUtil() {
     }
 
-    public static List<List<Integer>> partition(final List<Integer> list, final int size) throws InvalidSizeArgumentException {
+    public static List<List<Integer>> partition(final List<Integer> list, final int size) {
+        if (list == null) {
+            throw new IllegalArgumentException("The list parameter cannot be null.");
+        }
         if (size < 1) {
-            throw new InvalidSizeArgumentException("The size parameter cannot be less than 1");
+            throw new IllegalArgumentException("The size parameter cannot be less than 1.");
         }
 
         final List<List<Integer>> partitionedList = new ArrayList<>();

@@ -1,6 +1,5 @@
 package fr.gwenrspl;
 
-import fr.gwenrspl.exceptions.InvalidSizeArgumentException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,29 +12,36 @@ public class PartitionUtilTest {
 
 
     @Test
-    public void should_return_empty_list_given_empty_list() throws InvalidSizeArgumentException {
+    public void should_return_empty_list_given_empty_list() {
         final List<Integer> listArgument = new ArrayList<>();
         final List<List<Integer>> expectedList = new ArrayList<>();
         final List<List<Integer>> actualList = PartitionUtil.partition(listArgument, 1);
         Assert.assertEquals(expectedList, actualList);
     }
 
-    @Test(expected = InvalidSizeArgumentException.class)
-    public void should_throw_exception_given_size_argument_of_zero() throws InvalidSizeArgumentException {
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_given_size_of_zero() {
         final List<Integer> listArgument = Arrays.asList(1, 2, 3, 4, 5);
         final int sizeArgument = 0;
         PartitionUtil.partition(listArgument, sizeArgument);
     }
 
-    @Test(expected = InvalidSizeArgumentException.class)
-    public void should_throw_exception_given_negative_size_argument() throws InvalidSizeArgumentException {
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_given_null_list() {
+        final List<Integer> listArgument = null;
+        final int sizeArgument = 1;
+        PartitionUtil.partition(listArgument, sizeArgument);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_given_negative_size() {
         final List<Integer> listArgument = Arrays.asList(1, 2, 3, 4, 5);
         final int sizeArgument = -5;
         PartitionUtil.partition(listArgument, sizeArgument);
     }
 
     @Test
-    public void should_return_correct_partioned_list_given_correct_arguments() throws InvalidSizeArgumentException {
+    public void should_return_correct_partioned_list_given_correct_arguments() {
         final List<Integer> listArgument = Arrays.asList(1, 2, 3, 4, 5);
         int sizeArgument = 2;
         final List<List<Integer>> expectedList = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Collections.singletonList(5));
