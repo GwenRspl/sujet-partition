@@ -1,6 +1,6 @@
 package fr.gwenrspl;
 
-import fr.gwenrspl.exceptions.InvalidSizeParameterException;
+import fr.gwenrspl.exceptions.InvalidSizeArgumentException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,43 +20,43 @@ public class PartitionHandlerImplTest {
     }
 
     @Test
-    public void should_return_empty_list_given_empty_list() throws InvalidSizeParameterException {
-        final List<Integer> listParameter = new ArrayList<>();
+    public void should_return_empty_list_given_empty_list() throws InvalidSizeArgumentException {
+        final List<Integer> listArgument = new ArrayList<>();
         final List<List<Integer>> expectedList = new ArrayList<>();
-        final List<List<Integer>> actualList = this.partitionHandler.partition(listParameter, 1);
+        final List<List<Integer>> actualList = this.partitionHandler.partition(listArgument, 1);
         Assert.assertEquals(expectedList, actualList);
     }
 
-    @Test(expected = InvalidSizeParameterException.class)
-    public void should_throw_exception_given_size_parameter_of_zero() throws InvalidSizeParameterException {
-        final List<Integer> listParameter = Arrays.asList(1, 2, 3, 4, 5);
-        final int sizeParameter = 0;
-        this.partitionHandler.partition(listParameter, sizeParameter);
+    @Test(expected = InvalidSizeArgumentException.class)
+    public void should_throw_exception_given_size_argument_of_zero() throws InvalidSizeArgumentException {
+        final List<Integer> listArgument = Arrays.asList(1, 2, 3, 4, 5);
+        final int sizeArgument = 0;
+        this.partitionHandler.partition(listArgument, sizeArgument);
     }
 
-    @Test(expected = InvalidSizeParameterException.class)
-    public void should_throw_exception_given_negative_size_parameter() throws InvalidSizeParameterException {
-        final List<Integer> listParameter = Arrays.asList(1, 2, 3, 4, 5);
-        final int sizeParameter = -5;
-        this.partitionHandler.partition(listParameter, sizeParameter);
+    @Test(expected = InvalidSizeArgumentException.class)
+    public void should_throw_exception_given_negative_size_argument() throws InvalidSizeArgumentException {
+        final List<Integer> listArgument = Arrays.asList(1, 2, 3, 4, 5);
+        final int sizeArgument = -5;
+        this.partitionHandler.partition(listArgument, sizeArgument);
     }
 
     @Test
-    public void should_return_correct_partioned_list_given_correct_parameters() throws InvalidSizeParameterException {
-        final List<Integer> listParameter = Arrays.asList(1, 2, 3, 4, 5);
-        int sizeParameter = 2;
+    public void should_return_correct_partioned_list_given_correct_arguments() throws InvalidSizeArgumentException {
+        final List<Integer> listArgument = Arrays.asList(1, 2, 3, 4, 5);
+        int sizeArgument = 2;
         final List<List<Integer>> expectedList = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Collections.singletonList(5));
-        List<List<Integer>> actualList = this.partitionHandler.partition(listParameter, sizeParameter);
+        List<List<Integer>> actualList = this.partitionHandler.partition(listArgument, sizeArgument);
         Assert.assertEquals(expectedList, actualList);
 
         final List<List<Integer>> expectedList2 = Arrays.asList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5));
-        sizeParameter = 3;
-        actualList = this.partitionHandler.partition(listParameter, sizeParameter);
+        sizeArgument = 3;
+        actualList = this.partitionHandler.partition(listArgument, sizeArgument);
         Assert.assertEquals(expectedList2, actualList);
 
         final List<List<Integer>> expectedList3 = Arrays.asList(Collections.singletonList(1), Collections.singletonList(2), Collections.singletonList(3), Collections.singletonList(4), Collections.singletonList(5));
-        sizeParameter = 1;
-        actualList = this.partitionHandler.partition(listParameter, sizeParameter);
+        sizeArgument = 1;
+        actualList = this.partitionHandler.partition(listArgument, sizeArgument);
         Assert.assertEquals(expectedList3, actualList);
     }
 }
