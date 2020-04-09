@@ -1,19 +1,24 @@
-#Sujet Partition
-##Présentation
+# Sujet Partition
+
+## Présentation
+
 Sujet-partition est une librairie comprenant la méthode partition qui prend un paramètre « liste » et un paramètre « taille » et retourne une liste de sous liste, où chaque sous liste a au maximum « taille » éléments.  
-##Installation
-###Via Jar  
+
+## Installation
+
+### Via Jar  
+
 **IntelliJ IDEA**  
- File > Project Structure > Librairies > New Project Library > Java  
- Puis sélectionnez *sujet-partition-1.0-SNAPSHOT.jar*
+File > Project Structure > Librairies > New Project Library > Java  
+Puis sélectionnez *sujet-partition-1.0-SNAPSHOT.jar*
  
- **Eclipse**  
- Clic droit sur votre projet > Build Path > Configure Build Path > Libraries > Add External JARs  
- Puis sélectionnez *sujet-partition-1.0-SNAPSHOT.jar*
+**Eclipse**  
+Clic droit sur votre projet > Build Path > Configure Build Path > Libraries > Add External JARs  
+Puis sélectionnez *sujet-partition-1.0-SNAPSHOT.jar*
 
  
- ###Via Maven
- Ajoutez la dépendance au pom.xml de votre projet:
+### Via Maven
+Ajoutez la dépendance au pom.xml de votre projet:
 ```xml
 <dependency>
     <groupId>fr.gwenrspl</groupId>
@@ -25,7 +30,8 @@ Puis ajouter le module à votre projet:
 
 **IntelliJ IDEA**   
 File > Project Structure > Modules > Add > Import module, puis sélectionnez le projet *sujet-partition*
-##Utilisation
+
+## Utilisation
 Une fois la librairie importée dans votre projet, vous pouvez l'utiliser comme suit:  
 ```java
 import fr.gwenrspl.PartitionUtil;
